@@ -20,7 +20,7 @@ You can find the code and README at the GitHub repo [hadoop-single-node-vagrant]
 ```bash
 [hadoop-single-node-vagrant]$ vagrant halt gfcdh1
 [hadoop-single-node-vagrant]$ vagrant package gfcdh1  --output gfcdh1.box
-[hadoop-single-node-vagrant]$ vagrant box add robert-cdh-box master.box
+[hadoop-single-node-vagrant]$ vagrant box add robert-cdh-box gfcdh1.box
 ```
 
 Now you can create virtual machines from this box by simply giving the name of the box in the Vagrantfile, like
