@@ -18,14 +18,27 @@ You can find the code and README at the GitHub repo [hadoop-single-node-vagrant]
 ## Clone a new VM from Master box file
 
 ```bash
-[hadoop-single-node-vagrant]$ vagrant halt gfcdh1
-[hadoop-single-node-vagrant]$ vagrant package gfcdh1  --output gfcdh1.box
-[hadoop-single-node-vagrant]$ vagrant box add robert-cdh-box gfcdh1.box
+[cdh_docker]$ vagrant halt gfcdh1
+[cdh_docker]$ vagrant package gfcdh1  --output gfcdh1.box
+[cdh_docker]$ vagrant box add  --name robert0714/cdh-6.1.1-datanode    gfcdh1.box
+[cdh_docker]$ md5sum     gfcdh1.box 
+af41e36261e8429e73dc3b319a4c4fc4  gfcdh1.box
+
+[cdh_docker]$ vagrant halt gfcdh2
+[cdh_docker]$ vagrant package gfcdh2  --output gfcdh2.box
+[cdh_docker]$ vagrant box add  --name robert0714/cdh-6.1.1-namenode    gfcdh2.box 
+[cdh_docker]$ md5sum     gfcdh2.box 
+87989c96a156f846edd246fcafa570f0  gfcdh2.box
+
 ```
 
 Now you can create virtual machines from this box by simply giving the name of the box in the Vagrantfile, like
 
 ```yaml
-config.vm.box = "robert-cdh-box"
+config.vm.box = "robert0714/cdh-6.1.1-datanode "
 ```
-reference: https://www.sitepoint.com/create-share-vagrant-base-box/
+
+or refer the below [url]
+(https://www.sitepoint.com/create-share-vagrant-base-box/)
+
+upload to  VagranCloud[https://vagrantcloud.com/]
