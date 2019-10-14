@@ -8,8 +8,8 @@ echo "
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 ################ cdh-cookbook host entry ############
 107.70.38.211  gfcdh1.iead.local	gfcdh1
-107.70.38.212  gfcdh1.iead.local	gfcdh2
-107.70.38.213  gfcdh1.iead.local	gfcdh3
+107.70.38.212  gfcdh2.iead.local	gfcdh2
+107.70.38.213  gfcdh3.iead.local	gfcdh3
 ######################################################
 " > /etc/hosts
 fi

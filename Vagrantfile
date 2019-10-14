@@ -27,7 +27,7 @@ Vagrant.configure(2) do |config|
   (2..3).each do |i|
     config.vm.define "gfcdh#{i}" do |d|
  #    d.vm.box = "bento/centos-7.6"
-      d.vm.box = "robert-cdh-box"
+      d.vm.box = "robert0714/cdh-6.1.1-namenode"
       d.vm.hostname = "gfcdh#{i}"
       d.vm.network "private_network", ip: "107.70.38.21#{i}"
   #    d.vm.provision :shell, inline: "sudo apt-get install -y python"
@@ -38,8 +38,8 @@ Vagrant.configure(2) do |config|
       d.vm.provision "shell", inline: <<-SHELL
         sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g' /etc/ssh/sshd_config    
         sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config    
-        sudo cp /vagrant/sshd_config  /etc/ssh/sshd_config 
       SHELL
+      d.vm.provision :shell, path: "scripts/post-deploy-namenode.sh" 
     end
   end  
   if Vagrant.has_plugin?("vagrant-vbguest")
