@@ -28,3 +28,4 @@ Now you can create virtual machines from this box by simply giving the name of t
 ```yaml
 config.vm.box = "robert-cdh-box"
 ```
+reference: https://www.sitepoint.com/create-share-vagrant-base-box/
