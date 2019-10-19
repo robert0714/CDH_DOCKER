@@ -55,3 +55,15 @@ sudo  sh -c  "cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys"
 sudo sh -c  "printf 'NoHostAuthenticationForLocalhost yes
  Host *  
     StrictHostKeyChecking no' > /root/.ssh/config"
+
+sed -e 's/=enforcing/=disabled/' -i /etc/selinux/config
+echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'vm.swappiness=10'>> /etc/sysctl.conf
+sysctl -p
+echo never > /sys/kernel/mm/transparent_hugepage/defrag
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+echo "echo never > /sys/kernel/mm/transparent_hugepage/defrag" >> /etc/rc.local
+echo "echo never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
+systemctl stop firewalld.service
+systemctl disable firewalld.service
