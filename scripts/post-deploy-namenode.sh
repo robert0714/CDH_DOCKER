@@ -1,6 +1,10 @@
 #!/bin/bash
 # centos 7.6
 
+# 下載Cloudera相關套件
+sudo yum install  -y  oracle-j2sdk1.8
+sudo yum install -y   cloudera-manager-daemons cloudera-manager-agent cloudera-manager-server 
+
 # parcels
 sudo mkdir -p /opt/cloudera/parcel-repo/
 cd /opt/cloudera/parcel-repo/

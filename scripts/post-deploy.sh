@@ -27,7 +27,7 @@ sudo yum install ntp -y
 
 # 下載Cloudera相關套件
 sudo yum install  -y  oracle-j2sdk1.8
-sudo yum install -y   cloudera-manager-daemons cloudera-manager-agent cloudera-manager-server 
+sudo yum install -y   cloudera-manager-daemons cloudera-manager-agent  
 
 # java (請自行設定路徑) 
 sudo echo 'export JAVA_HOME=/usr/java/jdk1.8.0_181-cloudera' >> /etc/profile
@@ -47,7 +47,10 @@ sudo systemctl enable ntpd
 # 複製jdbc
 sudo  mkdir  -p /usr/share/java/
 sudo  cd  /usr/share/java/
-sudo  wget https://repo1.maven.org/maven2/org/postgresql/postgresql/42.2.8/postgresql-42.2.8.jar
+if [ ! -f postgresql-42.2.8.jar ]; then
+	sudo  wget https://repo1.maven.org/maven2/org/postgresql/postgresql/42.2.8/postgresql-42.2.8.jar
+fi
+
  
 sudo  ssh-keygen -t rsa -P '' -f /root/.ssh/id_rsa
 sudo  sh -c  "cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys"
